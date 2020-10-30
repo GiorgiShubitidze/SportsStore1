@@ -1,0 +1,54 @@
+﻿@{
+    @model ICollection<SportsStore.AppService.AppService>
+
+}
+<style>
+    .myDiv {
+        margin-right: 500px;
+    }
+</style>
+
+<body style="background-color:powderblue;">
+
+    <h2 style="margin-left:280px;">შორტები</h2>
+
+    <table>
+
+
+        @{
+            int col1 = 0;
+            int col2 = 0;
+            <tr>
+                <td>
+                    @foreach (var item in Model)
+                    {
+                        if (@col1 % 2 == 0)
+                        {
+                            <div class="myDiv">
+                                <p> @item.Name </p>  <p>  ფასი: @item.Prices  </p>
+                                <img src="@Url.Content(@item.Location)" alt="MyImage" />
+                            </div>
+                        }
+                        col1 = col1 + 1;
+                    }
+                </td>
+
+                <td>
+                    @foreach (var item in Model)
+                    {
+                        if (@col2 % 2 != 0)
+                        {
+                            <div>
+                                <p> @item.Name </p>  <p style="margin-bottom:14px">  ფასი: @item.Prices  </p>
+                                <img src="@Url.Content(@item.Location)" alt="MyImage" />
+                            </div>
+                        }
+                        col2 = col2 + 1;
+                    }
+                </td>
+
+            </tr>
+        }
+    </table>
+
+</body>
